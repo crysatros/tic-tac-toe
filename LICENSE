@@ -1,0 +1,4 @@
+Для сборки программы необходимо установить Java SE Development Kit 8u211, который доступен по ссылке: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+Для сборки необходимо запустить скрипт run.bat
+Для запуска программы необходимо установить Java SE Runtime Environment 8u211, доступный по ссылке:https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
+Для запуска использовать скрипт run.bat, находящийся в дериктории tic-tac-toe.
