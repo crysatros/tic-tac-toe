@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Scanner;
-
 public class GameField extends JPanel {
     private static GameField instance = null;
     public static final int FIELD_SIZE = 450;
@@ -13,9 +12,8 @@ public class GameField extends JPanel {
     static int linesCount = 3;
     int cellSize, x, y;
     boolean nextTurn = false;
-    Player player1;
-    Player player2;
-    int gameMode = 1;
+    Player p1;
+    Player p2;
     public String[][] cell;
     public static synchronized GameField getInstance() {
         if (instance == null)
@@ -33,13 +31,12 @@ public class GameField extends JPanel {
                 cell[i][j] = NOT_SIGN;
             }
         }
-        gameMode = 1;
         setVisible(true);
     }
     private GameField() {
         setVisible(false);
-        player1 = new Player("X");
-        player2 = new Player("O");
+        p1 = new Player("X");
+        p2 = new Player("O");
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -48,54 +45,54 @@ public class GameField extends JPanel {
                 y = e.getY() / cellSize;
                 System.out.println("Clicked on " + e.getX() + " " + e.getY());
                 if (!gameOver) {
-                    twoPlayersMode();
+                    GameStart();
                 }
             }
         });
     }
-    void twoPlayersMode() {
-        if (player1.isShotReady == 1) {
+    void GameStart() {
+        if (p1.isShotReady == 1) {
             nextTurn = true;
-            player2.isShotReady = 0;
+            p2.isShotReady = 0;
             System.out.println("Player 1 turn...");
-            player1.shoot(x,y);
+            p1.shoot(x,y);
         }
-        if (player1.win()) {
+        if (p1.win()) {
             System.out.println("Player 1 WIN");
             gameOver = true;
             gameOverMessage = "Player 1 WIN";
         }
         repaint();
-        if (isFieldFull() && !player1.win() && !player2.win()) {
+        if (isFieldFull() && !p1.win() && !p2.win()) {
             gameOver = true;
             gameOverMessage = "DRAW";
         }
-        if (player2.isShotReady == 1) {
+        if (p2.isShotReady == 1) {
             nextTurn = false;
-            player1.isShotReady = 0;
+            p1.isShotReady = 0;
             System.out.println("Player 2 turn...");
-            player2.shoot(x,y);
+            p2.shoot(x,y);
         }
         if (!gameOver) {
-            player2.shoot(x, y);
+            p2.shoot(x, y);
         }
-        if (player2.win()) {
+        if (p2.win()) {
             System.out.println("Player 2 WIN");
             gameOver = true;
             gameOverMessage = "Player 2 WIN";
         }
         repaint();
-        if (isFieldFull() && !player2.win() && !player1.win()) {
+        if (isFieldFull() && !p2.win() && !p1.win()) {
             gameOver = true;
             gameOverMessage = "DRAW";
         }
         if (nextTurn) {
-            player1.isShotReady = 0;
-            player2.isShotReady = 1;
+            p1.isShotReady = 0;
+            p2.isShotReady = 1;
         }
         else {
-            player1.isShotReady = 1;
-            player2.isShotReady = 0;
+            p1.isShotReady = 1;
+            p2.isShotReady = 0;
         }
     }
     boolean isCellBusy(int x, int y) {
