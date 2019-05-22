@@ -6,4 +6,4 @@
 Для запуска программы необходимо установить Java SE Runtime Environment 8u211, 
 который доступен по ссылке https://www.oracle.com/technetwork/java/javase/downloads/2133155
 
-Для запуска использовать скрипт run.bat, находящийся в директории tic-tac-toe/bin
+Для запуска использовать скрипт game.bat, находящийся в директории tic-tac-toe/bin
