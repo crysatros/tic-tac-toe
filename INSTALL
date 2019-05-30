@@ -3,3 +3,4 @@
 Для сборки запустить скрипт build.bat
 Для запуска программы необходимо установить Java SE Runtime Environment 8u211, 
 который доступен по ссылке https://www.oracle.com/technetwork/java/javase/downloads/2133155
+Для запуска программы использовать скрипт startgame находящийся в директории tic-tac-toe/bin
