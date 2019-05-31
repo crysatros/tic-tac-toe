@@ -1,3 +1,5 @@
+package org;
+
 public class Player extends Gamer{
     GameField gameField;
     int isShotReady = 1;
